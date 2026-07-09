@@ -1,0 +1,54 @@
+====================================
+Time: 2026-06-20 12:13:06
+Email: tushar123@gmail.com
+Password Entered: [REDACTED]
+Password Length: 4
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 12:20:55
+Email: tushar123@gmail.com
+Password Entered: 1234
+Password Length: 4
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 18:30:17
+Email: pratap234@gmail.com
+Password Entered: 12345
+Password Length: 5
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 18:48:50
+Email: pratap234@gmail.com
+Password Entered: 12345
+Password Length: 5
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 19:00:56
+Email: pratap234@gmail.com
+Password Entered: 12345
+Password Length: 5
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 19:09:29
+Email: pratap234@gmail.com
+Password Entered: 12345
+Password Length: 5
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+

@@ -1,0 +1,153 @@
+====================================
+Time: 2026-06-20 12:28:28
+Email: shyam@gamil.com
+Password Entered: 12
+Password Length: 2
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 17:06:27
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 17:06:37
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 17:28:27
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 17:29:39
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 17:29:55
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 17:33:30
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 17:35:10
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 17:35:23
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 17:37:32
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 17:37:52
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 18:05:26
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 18:06:00
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 18:25:49
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 18:29:15
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 18:29:50
+Email: pratap234@gmail.com
+Password Entered: 12345
+Password Length: 5
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-06-20 18:48:29
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
