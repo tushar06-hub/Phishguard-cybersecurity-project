@@ -1,0 +1,21 @@
+# Sensitive configuration
+otp_module/otp_config.php
+.env
+.env.*
+
+# Dependencies (reinstall using Composer)
+vendor/
+otp_module/vendor/
+
+# Logs
+*.log
+training_log.txt
+register_log.txt
+
+# Database backups and exports
+*.sql
+*.sql.gz
+
+# Operating system files
+.DS_Store
+Thumbs.db

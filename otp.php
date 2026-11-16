@@ -1,129 +1,152 @@
 <?php
+
 session_start();
-if(!isset($_SESSION['otp_attempts']))
-{
+
+if (!isset($_SESSION['otp_attempts'])) {
     $_SESSION['otp_attempts'] = 0;
 }
-if(!isset($_SESSION['otp']))
-{
+
+if (!isset($_SESSION['otp'])) {
     header("Location: login.php");
     exit();
 }
 
-$message="";
+$message = "";
 
-if($_SERVER["REQUEST_METHOD"]=="POST")
-{
-    $userOtp=$_POST['otp'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    if($userOtp == $_SESSION['otp'])
-{
-    $_SESSION['otp_attempts'] = 0;
+    $userOtp = trim($_POST['otp'] ?? '');
 
-    header("Location: awareness.php");
-    exit();
-}
-else
-{
-    $_SESSION['otp_attempts']++;
+    if (
+        preg_match('/^[0-9]{6}$/', $userOtp) &&
+        hash_equals((string)$_SESSION['otp'], $userOtp)
+    ) {
 
-    if($_SESSION['otp_attempts'] >= 3)
-    {
-        session_destroy();
+        unset($_SESSION['otp']);
+        unset($_SESSION['otp_attempts']);
 
-die('
+        session_regenerate_id(true);
 
-<!DOCTYPE html>
+        header("Location: awareness.php");
+        exit();
 
-<html>
+    } else {
 
-<head>
+        $_SESSION['otp_attempts']++;
 
-<title>Access Denied</title>
+        if ($_SESSION['otp_attempts'] >= 3) {
 
-<link rel="stylesheet" href="style.css">
+            session_unset();
+            session_destroy();
 
-</head>
+            die('
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Access Denied</title>
+                <link rel="stylesheet" href="style.css">
+            </head>
+            <body class="otp-page">
 
-<body>
+                <div class="login-box">
+                    <h2 style="color:#bd3c3c;">
+                        Access Denied
+                    </h2>
 
-<div class="login-box">
+                    <p>
+                        Maximum OTP attempts exceeded.
+                    </p>
 
-<h2 style="color:red;">
-Access Denied
-</h2>
+                    <p>
+                        Please login again to continue.
+                    </p>
 
-<p>
-Maximum OTP attempts exceeded.
-</p>
+                    <br>
 
-<p>
-Please login again to continue.
-</p>
+                    <a href="login.php" class="btn">
+                        Back To Login
+                    </a>
+                </div>
 
-<br>
+            </body>
+            </html>
+            ');
+        }
 
-<a href="login.php" class="btn">
-Back To Login
-</a>
+        $remaining = 3 - $_SESSION['otp_attempts'];
 
-</div>
-
-</body>
-
-</html>
-
-');
+        $message = "Invalid OTP. Attempts remaining: " . $remaining;
     }
-
-    $remaining =
-    3 - $_SESSION['otp_attempts'];
-
-    $message =
-    'Invalid OTP. Attempts Remaining: '
-    .$remaining;
-}
 }
 ?>
 
 <!DOCTYPE html>
-
 <html>
+
 <head>
-<title>OTP Verification</title>
-<link rel="stylesheet" href="style.css">
+    <title>SecureTrust Bank | OTP Verification</title>
+
+    <link rel="stylesheet" href="style.css?v=3">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body class="otp-page">
 
-<div class="login-box">
+    <div class="login-box">
 
-<h2>OTP Verification</h2>
+        <div class="form-image">
+            <span style="font-size:45px;">🔐</span>
+        </div>
 
-<p>
-Demo OTP:
-<b><?php echo $_SESSION['otp']; ?></b>
-</p>
+        <h2>Verify Your Identity</h2>
 
-<p style="color:red;">
-<?php echo $message; ?>
-</p>
+        <p class="otp-description">
+            Enter the six-digit verification code to continue
+            securely to your account.
+        </p>
 
-<form method="POST">
+        <!-- Temporary development display -->
+        <div class="security-banner">
+            Development OTP:
+            <strong>
+                <?php echo htmlspecialchars((string)$_SESSION['otp']); ?>
+            </strong>
+        </div>
 
-<input
-type="text"
-name="otp"
-placeholder="Enter OTP"
-required>
+        <br>
 
-<button type="submit">
-Verify OTP
-</button>
+        <?php if (!empty($message)): ?>
+            <p style="color:#bd3c3c; margin-bottom:15px;">
+                <?php echo htmlspecialchars($message); ?>
+            </p>
+        <?php endif; ?>
 
-</form>
+        <form method="POST">
 
-</div>
+            <input
+                type="text"
+                name="otp"
+                class="otp-input"
+                inputmode="numeric"
+                pattern="[0-9]{6}"
+                maxlength="6"
+                placeholder="000000"
+                autocomplete="one-time-code"
+                required
+            >
+
+            <button type="submit">
+                Verify & Continue
+            </button>
+
+        </form>
+
+        <p>
+            Protected by SecureTrust authentication
+        </p>
+
+    </div>
 
 </body>
 </html>

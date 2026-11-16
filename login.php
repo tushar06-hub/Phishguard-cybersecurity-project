@@ -1,51 +1,74 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Login</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SecureTrust Bank - Login</title>
+
+    <link rel="stylesheet" href="style.css?v=10">
 </head>
 
 <body class="login-page">
 
-<div class="login-box">
+    <div class="login-box">
 
-<h2>Internet Banking Login</h2>
+        <h2>Welcome Back</h2>
 
-<form action="submit.php" method="POST" autocomplete="off">
-<img
-src="https://cdn-icons-png.flaticon.com/512/295/295128.png"
-class="form-image">
-<input
-type="email"
-name="email"
-autocomplete="off"
-placeholder="Email Address"
-required>
+        <p class="login-subtitle">
+            Login to your SecureTrust account
+        </p>
 
-<input
-type="password"
-name="password"
-autocomplete="new-password"
-placeholder="Password"
-required>
+        <form action="otp_module/otp_send.php"
+              method="POST"
+              autocomplete="off">
 
-<button type="submit">
-Login
-</button>
+            <img
+                src="https://cdn-icons-png.flaticon.com/512/295/295128.png"
+                class="form-image"
+                alt="Login icon"
+            >
 
-</form>
-<br>
+            <label for="email">Email Address</label>
 
-<p style="text-align:center;">
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                autocomplete="off"
+                required
+            >
 
-New User?
+            <label for="password">Password</label>
 
-<a href="register.php">
-Register Here
-</a>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="new-password"
+                required
+            >
 
-</p>
-</div>
+            <button type="submit">
+                Login Securely
+            </button>
+
+        </form>
+
+        <p class="register-link">
+            New User?
+            <a href="register.php">Register Here</a>
+        </p>
+
+        <p class="security-note">
+            Your account is protected with email OTP verification.
+        </p>
+
+    </div>
 
 </body>
 </html>

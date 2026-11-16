@@ -6,7 +6,7 @@
 
 <title>SecureTrust Bank</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 
 </head>
 

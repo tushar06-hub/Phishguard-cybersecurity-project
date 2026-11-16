@@ -1,143 +1,267 @@
+
 <?php
 
 include("db.php");
 
 $message = "";
+$messageType = "";
 
-$email = $_POST['email'] ?? '';
-$password = $_POST['password'] ?? '';
+// Keep the log in the main PhishGuard directory.
+$logFile = __DIR__ . "/register_log.txt";
 
-$ip = $_SERVER['REMOTE_ADDR'];
-$time = date("Y-m-d H:i:s");
-
-$log =
-"====================================\n".
-"Time: $time\n".
-"Email: $email\n".
-"Password Entered: ".$password."\n".
-"Password Length: ".strlen($password)."\n".
-"IP Address: $ip\n".
-"Simulation: Phishing Awareness Demo\n".
-"====================================\n\n";
-
-file_put_contents(
-    "/var/www/html/phishguard/register_log.txt",
-    $log,
-    FILE_APPEND
-);
-
-
-if($_SERVER["REQUEST_METHOD"] == "POST")
+function writeDemoLog($event, $name, $email, $status, $reason = "")
 {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    global $logFile;
 
-    $hashedPassword =
-    password_hash(
-    $password,
-    PASSWORD_DEFAULT
+    $time = date("Y-m-d H:i:s");
+    $ip = $_SERVER['REMOTE_ADDR'] ?? 'Unknown';
+
+    // Prevent newlines in user input from creating fake log entries.
+    $name = str_replace(["\r", "\n"], " ", $name);
+    $email = str_replace(["\r", "\n"], " ", $email);
+    $reason = str_replace(["\r", "\n"], " ", $reason);
+
+    $log =
+        "====================================\n" .
+        "Time: $time\n" .
+        "Event: $event\n" .
+        "Name: $name\n" .
+        "Email: $email\n" .
+        "IP Address: $ip\n" .
+        "Status: $status\n" .
+        "Details: $reason\n" .
+        "Simulation: PhishGuard Awareness Demo\n" .
+        "====================================\n\n";
+
+    $saved = file_put_contents(
+        $logFile,
+        $log,
+        FILE_APPEND | LOCK_EX
     );
 
-    $stmt = $conn->prepare(
-    "INSERT INTO users
-    (name,email,password_hash)
-    VALUES
-    (?,?,?)"
-    );
-
-    $stmt->bind_param(
-    "sss",
-    $name,
-    $email,
-    $hashedPassword
-    );
-
-    if($stmt->execute())
-    {
-        $message = "Registration Successful";
+    if ($saved === false) {
+        error_log("PhishGuard: Could not write to register_log.txt");
     }
-    else
-    {
-        $message = "Error: ".$stmt->error;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $name = trim($_POST['name'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    // Record registration attempt.
+    writeDemoLog(
+        "Registration Attempt",
+        $name,
+        $email,
+        "Received"
+    );
+
+    if ($name == "" || $email == "" || $password == "") {
+
+        $message = "Please fill in all fields.";
+        $messageType = "error";
+
+        writeDemoLog(
+            "Registration",
+            $name,
+            $email,
+            "FAILED",
+            "Required fields were missing"
+        );
+
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+        $message = "Invalid email address! Please enter a valid email.";
+        $messageType = "error";
+
+        writeDemoLog(
+            "Registration",
+            $name,
+            $email,
+            "FAILED",
+            "Invalid email format"
+        );
+
+    } else {
+
+        $hashedPassword = password_hash(
+            $password,
+            PASSWORD_DEFAULT
+        );
+
+        $stmt = $conn->prepare(
+            "INSERT INTO users (name, email, password_hash)
+             VALUES (?, ?, ?)"
+        );
+
+        if ($stmt) {
+
+            $stmt->bind_param(
+                "sss",
+                $name,
+                $email,
+                $hashedPassword
+            );
+
+            try {
+
+                if ($stmt->execute()) {
+
+                    $message = "Registration Successful! You can now login.";
+                    $messageType = "success";
+
+                    writeDemoLog(
+                        "New User Registration",
+                        $name,
+                        $email,
+                        "SUCCESS",
+                        "New account created in database"
+                    );
+                }
+
+            } catch (mysqli_sql_exception $e) {
+
+                if ($e->getCode() == 1062) {
+
+                    $message = "This email is already registered. Please use another email address.";
+                    $messageType = "error";
+
+                    writeDemoLog(
+                        "New User Registration",
+                        $name,
+                        $email,
+                        "FAILED",
+                        "Duplicate email registration attempt"
+                    );
+
+                } else {
+
+                    $message = "Registration failed. Please try again.";
+                    $messageType = "error";
+
+                    error_log("PhishGuard registration error: " . $e->getMessage());
+
+                    writeDemoLog(
+                        "New User Registration",
+                        $name,
+                        $email,
+                        "FAILED",
+                        "Database error"
+                    );
+                }
+            }
+
+            $stmt->close();
+
+        } else {
+
+            $message = "Database error. Please try again.";
+            $messageType = "error";
+
+            writeDemoLog(
+                "New User Registration",
+                $name,
+                $email,
+                "FAILED",
+                "Database statement preparation failed"
+            );
+        }
     }
 }
 
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+    <title>SecureTrust Bank - Register</title>
+
+    <link rel="stylesheet" href="style.css?v=10">
 
 </head>
 
 <body class="register-page">
 
-<div class="login-box">
+    <div class="login-box">
 
-<h2>Create Account</h2>
-<img
-src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-class="form-image">
-<?php
-if($message!="")
-{
-    echo "<p>$message</p>";
-}
-?>
+        <h2>Create Account</h2>
 
-<form method="POST" autocomplete="off">
+        <p class="register-subtitle">
+            Join SecureTrust Banking
+        </p>
 
-<input
-type="text"
-name="name"
-autocomplete="off"
-placeholder="Full Name"
-required>
+        <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            class="form-image"
+            alt="Registration icon"
+        >
 
-<input
-type="email"
-name="email"
-autocomplete="off"
-placeholder="Email Address"
-required>
+        <?php if ($message != ""): ?>
 
-<input
-type="password"
-name="password"
-autocomplete="new-password"
-placeholder="Password"
-required>
+            <div class="register-message <?php echo htmlspecialchars($messageType); ?>">
+                <?php echo htmlspecialchars($message); ?>
+            </div>
 
-<button type="submit">
+        <?php endif; ?>
 
-Register
+        <form method="POST" action="register.php" autocomplete="off">
 
-</button>
+            <label for="name">Full Name</label>
 
-</form>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                autocomplete="off"
+                required
+            >
 
-<br>
+            <label for="email">Email Address</label>
 
-<p style="text-align:center;">
+            <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Enter your email address"
+                autocomplete="off"
+                required
+            >
 
-Already have an account?
+            <label for="password">Create Password</label>
 
-<a href="login.php">
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Create a password"
+                autocomplete="new-password"
+                required
+            >
 
-Login Here
+            <button type="submit">
+                Create Account
+            </button>
 
-</a>
+        </form>
 
-</p>
+        <p class="register-link">
+            Already have an account?
+            <a href="login.php">Login Here</a>
+        </p>
 
-</div>
+        <p class="security-note">
+            Your information is protected with password hashing.
+        </p>
+
+    </div>
 
 </body>
-
 </html>

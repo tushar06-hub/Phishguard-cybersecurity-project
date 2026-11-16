@@ -151,3 +151,263 @@ IP Address: 127.0.0.1
 Simulation: Phishing Awareness Demo
 ====================================
 
+====================================
+Time: 2026-07-10 04:47:00
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 07:27:51
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 07:28:11
+Email: ram124@gmail.com
+Password Entered: 123456
+Password Length: 6
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 07:29:42
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 09:40:20
+Email: 
+Password Entered: 
+Password Length: 0
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 09:55:50
+Event: Registration Attempt
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 10:48:08
+Event: Registration Attempt
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 10:53:07
+Event: Registration Attempt
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 11:02:24
+Event: Registration Attempt
+IP Address: 127.0.0.1
+Simulation: Phishing Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 11:22:55
+Event: Registration Attempt
+Name: tilu
+Email: tilu123@gmail.com
+IP Address: 127.0.0.1
+Status: Received
+Details: 
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 11:22:55
+Event: New User Registration
+Name: tilu
+Email: tilu123@gmail.com
+IP Address: 127.0.0.1
+Status: SUCCESS
+Details: New account created in database
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 14:25:41
+Event: Registration Attempt
+Name: tushar
+Email: this.is.tushar06@gmail.com
+IP Address: 127.0.0.1
+Status: Received
+Details: 
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 14:26:12
+Event: Registration Attempt
+Name: mohit
+Email: mohit123@gmail.com
+IP Address: 127.0.0.1
+Status: Received
+Details: 
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 14:26:12
+Event: New User Registration
+Name: mohit
+Email: mohit123@gmail.com
+IP Address: 127.0.0.1
+Status: SUCCESS
+Details: New account created in database
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 14:34:17
+Event: Registration Attempt
+Name: mohit
+Email: mohit123@gmail.com
+IP Address: 127.0.0.1
+Status: Received
+Details: 
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 14:34:17
+Event: New User Registration
+Name: mohit
+Email: mohit123@gmail.com
+IP Address: 127.0.0.1
+Status: FAILED
+Details: Duplicate email registration attempt
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 14:34:38
+Event: Registration Attempt
+Name: tushar
+Email: this.is.tushar06@gmail.com
+IP Address: 127.0.0.1
+Status: Received
+Details: 
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 14:34:38
+Event: New User Registration
+Name: tushar
+Email: this.is.tushar06@gmail.com
+IP Address: 127.0.0.1
+Status: FAILED
+Details: Duplicate email registration attempt
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 14:40:33
+Event: Registration Attempt
+Name: tushar
+Email: this.is.tushar06@gmail.com
+IP Address: 127.0.0.1
+Status: Received
+Details: 
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 14:40:33
+Event: New User Registration
+Name: tushar
+Email: this.is.tushar06@gmail.com
+IP Address: 127.0.0.1
+Status: FAILED
+Details: Duplicate email registration attempt
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 14:40:55
+Event: Registration Attempt
+Name: honey
+Email: 123@gmail
+IP Address: 127.0.0.1
+Status: Received
+Details: 
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 14:40:55
+Event: Registration
+Name: honey
+Email: 123@gmail
+IP Address: 127.0.0.1
+Status: FAILED
+Details: Invalid email format
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 15:10:39
+Event: Registration Attempt
+Name: tushar
+Email: this.is.tushar06@gmail.com
+IP Address: 127.0.0.1
+Status: Received
+Details: 
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 15:10:39
+Event: New User Registration
+Name: tushar
+Email: this.is.tushar06@gmail.com
+IP Address: 127.0.0.1
+Status: FAILED
+Details: Duplicate email registration attempt
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 15:11:46
+Event: Registration Attempt
+Name: honey singh
+Email: @abcgmail
+IP Address: 127.0.0.1
+Status: Received
+Details: 
+Simulation: PhishGuard Awareness Demo
+====================================
+
+====================================
+Time: 2026-11-14 15:11:46
+Event: Registration
+Name: honey singh
+Email: @abcgmail
+IP Address: 127.0.0.1
+Status: FAILED
+Details: Invalid email format
+Simulation: PhishGuard Awareness Demo
+====================================
+
